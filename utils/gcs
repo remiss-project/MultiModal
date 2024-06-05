@@ -1,0 +1,30 @@
+
+#tar -xf google-cloud-cli-478.0.0-linux-x86_64.tar.gz
+#./google-cloud-sdk/install.sh
+#pip install google-cloud-vision
+
+
+export PATH=$PATH:/data2/users/arka/rav/google-cloud-sdk/bin
+
+
+gcloud init
+gcloud services enable vision.googleapis.com
+gcloud projects add-iam-policy-binding aerobic-cosmos-425308-n8 --member="user:xadcx19@gmail.com" --role='roles/editor'
+gcloud auth application-default login
+from google.cloud import vision
+
+
+
+
+def detect_web(path,how_many_queries):
+    """Detects web annotations given an image."""
+    client = vision.ImageAnnotatorClient()
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
+    image = vision.Image(content=content)
+    response = client.web_detection(image=image, max_results=how_many_queries)
+    annotations = response.web_detection
+    return annotations
+
+#detect_web('/data2/users/arka/rav/runtime_data/live_run/claim_images/claim_1578844998996750336_img.jpg',2)
+

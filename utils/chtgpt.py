@@ -6,10 +6,6 @@ import pdb
 import time
 
 
-#key="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" ##idxmtg  
-#key="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" #audey@cvc.uab.cat  #10  
-key="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" ##arkaujjaldey ##   2K
-#key="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" ##arkadeycvc   ##
 
 
 max_limit=19000

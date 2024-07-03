@@ -1,0 +1,20 @@
+FROM ubuntu:20.04
+
+# Set DEBIAN_FRONTEND to noninteractive to avoid prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+WORKDIR /app
+ADD . /app
+
+
+RUN set -xe \
+    && apt-get update -y \
+    && apt-get install -y python3-pip python3-distutils python3-setuptools python3-wheel \
+    && pip install --upgrade pip \
+    && pip install -r remiss_client_requirements.txt 
+
+EXPOSE 7861
+ENV GRADIO_SERVER_NAME="0.0.0.0"
+
+CMD ["python3", "remiss_client_v1.py"]
+

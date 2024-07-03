@@ -1,0 +1,24 @@
+FROM nvidia/cuda:11.4.3-devel-ubuntu20.04
+
+# Set DEBIAN_FRONTEND to noninteractive to avoid prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Use a different mirror for apt-get
+RUN sed -i 's|http://archive.ubuntu.com/ubuntu/|http://mirrors.edge.kernel.org/ubuntu/|g' /etc/apt/sources.list
+
+WORKDIR /app
+ADD . /app
+
+RUN set -xe \
+    && apt-get update -y \
+    && apt-get install -y python3-pip python3-distutils python3-setuptools python3-wheel \
+    && pip install --upgrade pip \
+    && pip install -r requirements.txt \
+    && apt-get install -y libgl1 libgl1-mesa-glx libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/* /root/.cache/pip
+
+EXPOSE 7860
+ENV GRADIO_SERVER_NAME="0.0.0.0"
+
+CMD ["python3", "chimser_rtx.py"]
+

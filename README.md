@@ -8,6 +8,6 @@ https://cloud.google.com/vision/docs/setup
 # create and set openai API, update in config.py
 #todo 
 
-#run server
+# run server
 python chimser_rtl.py
 

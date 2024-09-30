@@ -10,6 +10,7 @@ key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 # create and set Programmable search engine id  and api in config.py
 https://programmablesearchengine.google.com/about/
+
 dir_ser_api     ='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' 
 gse_cid         ='XXXXXXXXXXXXXXXXXXXXXXX'
 
